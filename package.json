@@ -1,0 +1,23 @@
+{
+  "name": "Cinema-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloFX/Cinema-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloFX/Cinema-App/issues"
+  },
+  "homepage": "https://github.com/PabloFX/Cinema-App#readme",
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
