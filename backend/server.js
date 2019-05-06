@@ -1,8 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const halls = require("./src/routes/halls");
 
 const port = process.env.PORT || 8080;
 const app = express();
+
 const URL =
   "mongodb+srv://coderscamp:coderscrew@cluster-ajob4.mongodb.net/test?retryWrites=true";
 
@@ -17,6 +19,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(express.json());
+app.use("/api/halls", halls);
 
 mongoose
   .connect(URL, { useNewUrlParser: true, dbName: "cinema-app" })
