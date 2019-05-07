@@ -1,0 +1,13 @@
+.navbar {
+    background-color: $primary-color !important ;
+
+     a {
+        color: $default-color;
+        font-weight: 500;
+        font-size: 25px;
+    }
+     i {
+         color: $default-color;
+         margin-right: 20px;
+     }
+}

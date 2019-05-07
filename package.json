@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/PabloFX/Cinema-App#readme",
   "dependencies": {
-    "concurrently": "^4.1.0"
+    "concurrently": "^4.1.0",
+    "node-sass": "^4.12.0",
+    "react-materialize": "^3.2.2"
   }
 }
