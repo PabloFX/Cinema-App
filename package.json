@@ -19,7 +19,10 @@
   "homepage": "https://github.com/PabloFX/Cinema-App#readme",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "install": "^0.12.2",
     "node-sass": "^4.12.0",
-    "react-materialize": "^3.2.2"
+    "npm": "^6.9.0",
+    "react-materialize": "^3.2.2",
+    "react-router-dom": "^5.0.0"
   }
 }

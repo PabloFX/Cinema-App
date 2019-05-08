@@ -12,7 +12,10 @@ class MoviesInfoBlock extends React.Component {
                     <p className="genre">Thriller, comedy</p>
                     <p className="durationAndCountry">120 min, USA</p>
                     </div>
-                    <div className="movieRating"></div>
+                    <div className="ratingBookmark">
+                    <p className="ratingHolder">
+                    <i className="tiny material-icons">star_border</i>5.9</p>
+                    </div>
                 </div>
             </div>
         )
