@@ -1,4 +1,7 @@
-@import "utils/mixin.scss";
-@import "utils/vars.scss";
-@import "utils/navbar.scss";
-@import "utils/sidebar.scss";
+@import "./utils/mixins.scss";
+@import "./utils/vars.scss";
+@import "./utils/fonts.scss";
+@import "./navbar.scss";
+@import "./sidebar.scss";
+@import "./mainPart.scss";
+@import "./calendarAndSort.scss";

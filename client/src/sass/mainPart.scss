@@ -1,0 +1,41 @@
+body {
+    background-color: $default-color;
+    font-family: $roboto;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.moviesHolder {
+    margin-top: 2px;
+}
+
+.particularMovie {
+    display: flex;
+    justify-content: row;
+    border-bottom: 1px solid $gray-color;
+    img {
+        width: 140px;
+        height: 1%;
+    }
+}
+
+.movieInfo {
+    margin-left: 20px;
+}
+
+.movieName {
+    color: white;
+    font-size: 22px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+
+.genre,.durationAndCountry {
+    color: $lightGray-color;
+    font-size: 16px;
+}
+
+
