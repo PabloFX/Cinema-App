@@ -2,13 +2,12 @@ const mongoose = require("mongoose");
 const express = require("express");
 
 const { Room, validate } = require("../models/room");
+const { checkSeats } = require("../modules/checkSeats");
 const rooms = express.Router();
 
 rooms.get("/", async (req, res) => {
   const rooms = await Room.find();
-  console.log("rooms");
   res.send(rooms);
-  // console.log(tasks);
 });
 
 rooms.post("/", async (req, res) => {
@@ -50,12 +49,6 @@ rooms.post("/", async (req, res) => {
 //GET ZAKRES DAT
 
 rooms.get("/getRooms", async (req, res) => {
-  //const dateStart = new Date(req.body.dateStart);
-  //const dateEnd = new Date(req.body.dateEnd);
-
-  //console.log(dateStart);
-  //console.log(dateEnd);
-
   const rooms = await Room.find({
     date: {
       $gte: new Date(req.body.dateStart),
@@ -70,14 +63,18 @@ rooms.get("/getRooms", async (req, res) => {
 //PUT SEANS(BILETY)
 
 rooms.put("/getTickets", async (req, res) => {
-  const result = await Room.findOneAndUpdate(
-    { title: req.body.title, date: new Date(req.body.date) },
-    { capacity: req.body.capacity },
-    { new: true }
-  );
+  if (!req.body.capacity.every(checkSeats)) {
+    res.send("You can't leave one free spot between others");
+  } else {
+    const result = await Room.findOneAndUpdate(
+      { title: req.body.title, date: new Date(req.body.date) },
+      { capacity: req.body.capacity },
+      { new: true }
+    );
 
-  console.log(result);
-  res.send(result);
+    console.log(result);
+    res.send(result);
+  }
 });
 
 //DELETE SEANS PO ID
