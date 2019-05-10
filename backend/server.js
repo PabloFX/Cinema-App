@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const rooms = require("./src/routes/rooms");
+const tickets = require("./src/routes/tickets");
 
 const port = process.env.PORT || 8080;
 const app = express();
@@ -20,6 +21,7 @@ app.use(function(req, res, next) {
 
 app.use(express.json());
 app.use("/api/rooms", rooms);
+app.use("/api/tickets", tickets);
 
 mongoose
   .connect(URL, { useNewUrlParser: true, dbName: "cinema-app" })
