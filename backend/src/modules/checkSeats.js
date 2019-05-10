@@ -1,32 +1,26 @@
-const inputNumber = 54;
-
-//const binaryArray =  decToBin(inputNumber);
-
 function checkSeats(inputNumber) {
   let filteredArray = [];
   let isGap = false;
 
   decToBin(inputNumber).forEach((seat, index) => {
+    
+    //creates filtered array with indexes of taken seats
     if (seat) {
-      //console.log(`seat: ${seat}, index: ${index}`);
       filteredArray.push(index);
     }
   });
 
-  //console.log(filteredArray);
-
+  //check if there is now single gap between seats (indexes numbers)
   for (i = 1; i < filteredArray.length; i++) {
     if (filteredArray[i] - filteredArray[i - 1] === 2) {
-      //console.log(filteredArray[i]);
       isGap = true;
     }
   }
 
-  //console.log(isGap);
-
-  return !isGap;
+  return isGap;
 }
 
+//converts input decimal number to binary
 function decToBin(inputDec) {
   let binaryArray = [];
 
