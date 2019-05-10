@@ -19,16 +19,26 @@ const ParticularMovie = () => {
         </div>
         </div>
         <Tabs className="tab-demo z-depth-1" options={{swipeable: true}}>
-<Tab title="About"active id="myTabs">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugit enim deleniti. Dignissimos minus magni quia sequi eaque voluptates, adipisci odit nulla nisi quam quis enim iusto dolore quo similique.
-</Tab>
-<Tab title="Actors">
-Test 2
-</Tab>
-<Tab title="Tickets">
-Test 3
-</Tab>
-</Tabs>
+            <Tab title="About" active id="myTabs">
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugit enim deleniti. Dignissimos minus magni quia sequi eaque voluptates, adipisci odit nulla nisi quam quis enim iusto dolore quo similique.
+            </Tab>
+            <Tab title="Actors">
+                    <div className="actors">
+                <p className="cast">Cast :</p>    
+                Emilia Klark,
+                Matthew Karpenko,
+                Wojcieh Pawłak,
+                Michał Halicki,
+                Paweł Zaic  
+            </div>
+            </Tab>
+            <Tab title="Tickets">
+            Test 3
+            </Tab>
+        </Tabs>
+        <div className="buyTicket">
+                <i className="material-icons">credit_card</i>
+        </div>
         
     </section>
     )

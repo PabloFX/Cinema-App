@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ParticularMovie from './ParticularMovie';
-import MainPage from './MainPage.jsx';
+import MainPage from './MainPage';
+import CinemaHall from './CinemaHall'
 
 class Navigation extends React.Component {
     render() {
@@ -11,6 +12,7 @@ class Navigation extends React.Component {
                 <Switch>
                     <Route path="/" component={MainPage} exact />
                     <Route path="/particularMovie" component={ParticularMovie} />
+                    <Route path="/hall" component={CinemaHall} />
                 </Switch>
 
             </BrowserRouter>

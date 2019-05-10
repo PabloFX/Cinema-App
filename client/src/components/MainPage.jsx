@@ -11,7 +11,6 @@ class MainPage extends React.Component {
         <CalendarAndSort />
         <MoviesInfoBlock />
         </main>
-
     )   
     }
 }
