@@ -8,25 +8,18 @@ class PostMovies extends React.Component {
         this.props.fetchMovies();
     }
 
-    renderList() {
-        return this.props.movies.results.title.map(result => {
-            return (
-                <div className="item" key={result.id}>
-                    <i className="large middle aligned icon user" />
-                    <div className="content">
-                        <div className="description">
-                            <h2>{result.title}</h2>
-                        </div>
-                    </div>
-                </div>
-            );
-        })
-    }
+    // renderList() {
+    //     return this.props.movies.results.title.map(result => {
+    //         return (
+    //             <div className="item" key={result.id}>
+    //             </div>
+    //         );
+    //     })
+    // }
 
     
 
     render() {
-        console.log(this.props.movies.results);
         return (
             <div className="ui relaxed divided list"></div>
         );
