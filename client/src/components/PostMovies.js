@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import fetchMovies  from './actions/fetchMovies';
+import fetchMoviesWojtek  from './actions/fetchMovies(WOJTEK)';
 // import UserHeader from './UserHeader';
 
 class PostMovies extends React.Component {
@@ -34,6 +34,6 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    { fetchMovies }
+    { fetchMoviesWojtek }
 )(PostMovies);
 
