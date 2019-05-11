@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ParticularMovie from './ParticularMovie';
 import MainPage from './MainPage';
-import CinemaHall from './CinemaHall'
+import CinemaHall from './CinemaHall';
 
 class Navigation extends React.Component {
     render() {

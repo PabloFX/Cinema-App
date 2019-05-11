@@ -1,10 +1,17 @@
 import React from 'react' 
 import avengers from '../avengers.jpg'
+//import Cinema from './actions/fetchMovies'
+import FetchMovies from './actions/fetchMovies(WOJTEK)'
+
+
 
 class MoviesInfoBlock extends React.Component {
+
     render () {
+        console.log(FetchMovies().then(a => { console.log(a) }))
         return (
             <div className="moviesHolder">
+        
                 <div className="particularMovie">
                     <img src={avengers} alt="Movie poster"/>
                     <div className="movieInfo">
@@ -23,3 +30,4 @@ class MoviesInfoBlock extends React.Component {
 }
 
 export default MoviesInfoBlock
+//return (<div>{array.map(m => { return (<p>{m.title}</p>)})}</div>)
