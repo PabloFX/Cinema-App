@@ -9,16 +9,17 @@ body {
 
 .moviesHolder {
     margin-top: 2px;
+    display: flex;
+    flex-direction: column;
 }
 
 .particularMovie {
     display: flex;
-    justify-content: row;
     border-bottom: 1px solid $gray-color;
     position: relative;
     img {
-        width: 140px;
-        height: 1%;
+            width: 140px;
+            height: 1%;
     }
 }
 
