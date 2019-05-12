@@ -17,7 +17,7 @@ function checkSeats(inputNumber) {
     }
   }
 
-  return isGap;
+  return !isGap;
 }
 
 //converts input decimal number to binary
