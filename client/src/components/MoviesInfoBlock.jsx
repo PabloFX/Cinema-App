@@ -14,7 +14,7 @@ class MoviesInfoBlock extends React.Component {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
     }
     render () {
-        FetchMovies().then(a => { console.log({a}) })
+        
         return (
             <div className="moviesHolder">
                 {this.state.movieArr.map(m => { return (    
