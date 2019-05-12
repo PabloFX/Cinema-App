@@ -2,6 +2,7 @@ import React from 'react'
 import avengers from '../avengers.jpg'
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
+import FetchID from './actions/fetchID'
 
 
 
@@ -9,6 +10,8 @@ class MoviesInfoBlock extends React.Component {
 
     render () {
         console.log(FetchMovies().then(a => { console.log(a) }))
+        console.log(FetchID().then(a => { console.log(a) }))
+        
         return (
             <div className="moviesHolder">
         
