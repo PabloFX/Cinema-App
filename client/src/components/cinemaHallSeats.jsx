@@ -2,7 +2,7 @@ import React from 'react';
 
 class Seats extends React.Component {
     state = {
-        price: 0,
+        price: 10,
     }
 
     settingTicketPrice(e) {
