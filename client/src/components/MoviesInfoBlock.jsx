@@ -2,6 +2,7 @@ import React from 'react'
 
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
+import FetchTop100 from './actions/fetchTop100'
 
 
 
@@ -14,6 +15,7 @@ class MoviesInfoBlock extends React.Component {
     componentDidMount() {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
         FetchMovies().then(a => { console.log(a) })
+        FetchTop100().then(a => { console.log(a) })
     }
     render () {
         
