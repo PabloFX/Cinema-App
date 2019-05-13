@@ -88,7 +88,7 @@ rooms.get("/getRooms", async (req, res) => {
 });
 
 rooms.put("/getTickets", async (req, res) => {
-  if (!req.body.capacity.every(!checkSeats)) {
+  if (!req.body.capacity.every(checkSeats)) {
     res.status(400).send("You can't leave one free spot between others");
   } else {
     const result = await Room.findOneAndUpdate(
