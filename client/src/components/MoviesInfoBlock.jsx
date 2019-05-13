@@ -2,6 +2,7 @@ import React from 'react'
 
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
+import FetchID from './actions/fetchID'
 
 
 
