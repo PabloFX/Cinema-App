@@ -1,4 +1,5 @@
 import jsonPlaceholderMovies from '../../apis/jsonPlaceholderMovies';
+//import { EDEADLK } from 'constants';
 
 export const FetchMovies = async dispatch => {
     const response = await jsonPlaceholderMovies.get();
@@ -106,14 +107,41 @@ export const FetchMovies = async dispatch => {
             }
         }
     }
+//     var getJSON = function (url, callback) {
+//         var xhr = new XMLHttpRequest();
+//         xhr.open('GET', url, true);
+//         xhr.responseType = 'json';
+//         xhr.onload = function () {
+//             var status = xhr.status;
+//             if (status === 200) {
+//                 callback(xhr.response);
+//             } else {
+                
+//                 return false
+//             }
+//         };
+//         xhr.send();
+//     }
+
+//    function addTimeAndLanguage () {
+//         sortedArr.map(function(el){
+//            getJSON("https: //api.themoviedb.org/3/movie/" + el.id + "?api_key=73459706ef1474208ddc7b1990a073ed&language=en-US",
+//                function (json) {
+//                     el.push(json.runtime)
+//                })
+//                return sortedArr
+//            }
+           
+//         )}
 
 
+        
     //wywołania///////////////////////////////////////////////////
     const shortArr = cuttingMovies(arrayMovie);
     const sortedArr = sortingMovies(shortArr);
-    const finalArr = stringifyGenre(sortedArr);
-    console.log(finalArr);
-
+    //const finalArr = stringifyGenre(sortedArr);
+        //    addTimeAndLanguage()
+        
     return sortedArr
 };
 

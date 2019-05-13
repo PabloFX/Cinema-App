@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-materialize';
 import avengers2 from '../avengers2.jpg'
+import SideBar from './SideBar'
 
 const ParticularMovie = () => {
     return(
@@ -36,9 +37,10 @@ const ParticularMovie = () => {
             Test 3
             </Tab>
         </Tabs>
-        <div className="buyTicket">
+            <div className="buyTicket sidenav-trigger" data-target="slide-out" >
                 <i className="material-icons">credit_card</i>
         </div>
+        <SideBar /> 
         
     </section>
     )

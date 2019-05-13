@@ -2,17 +2,18 @@ import React from 'react'
 
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
-import FetchID from './actions/fetchID'
+
 
 
 
 class MoviesInfoBlock extends React.Component {
     state = {
-        movieArr: [{id: null, vote_average:null, title: null, poster_path: null}]
+        movieArr: [{id: null, vote_average:null, title: null, poster_path: null, genre_ids: [null,null]}]
     }
     
     componentDidMount() {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
+        FetchMovies().then(a => { console.log(a) })
     }
     render () {
         
@@ -23,7 +24,7 @@ class MoviesInfoBlock extends React.Component {
                 <img alt={m.title} src={`http://image.tmdb.org/t/p/w185/${m.poster_path}`} />
                     <div className="movieInfo">
                         <p className="movieName">{m.title}</p>
-                        <p className="genre">Thriller, comedy</p>
+                            <p className="genre">{m.genre_ids[0]},{m.genre_ids[1]}</p>
                         <p className="durationAndCountry">120 min, USA</p>
                     </div>
                     <div className="ratingBookmark">
