@@ -7,9 +7,9 @@ function randomSeats() {
   while (!isCorrect) {
     rowTakenSeats = Math.floor(Math.random() * 511);
     isCorrect = checkSeats(rowTakenSeats);
-    console.log(`Random number is: ${rowTakenSeats} and it is: ${isCorrect}`);
+    //console.log(`Random number is: ${rowTakenSeats} and it is: ${isCorrect}`);
   }
-  console.log(`row taken seats is: ${rowTakenSeats}`);
+  //console.log(`row taken seats is: ${rowTakenSeats}`);
   return rowTakenSeats;
 }
 

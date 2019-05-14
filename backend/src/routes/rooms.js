@@ -23,18 +23,17 @@ rooms.post("/", async (req, res) => {
   req.body.forEach(room => {
     return (room.date = new Date(room.date));
   });
-
+  //create random bookings
   req.body.forEach(room => {
-    console.log(room.capacity);
+    //console.log(room.capacity);
     const randomArray = room.capacity.map((row, i) => {
-      console.log(`initial row value is: ${row}`);
+      //console.log(`initial row value is: ${row}`);
       row = randomSeats();
-      console.log(`row number is: ${row}`);
+      //console.log(`row number is: ${row}`);
       return row;
     });
     room.capacity = randomArray.slice(0);
-    console.log(room.capacity);
-
+    //console.log(room.capacity);
   });
 
   //find room with given properties and return as an object

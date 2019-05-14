@@ -18,3 +18,5 @@ Step by step (from main dir):
 After installation, just type npm start - both client and backend will start. Remember to launch command from main directory (Cinema-App).
 
 Trello board: https://trello.com/b/9K1j9n5L/project-v-grupa-1
+
+FOR CONFIG FILE, PLEASE CONTACT OWNER OF THE REPOSITORY
