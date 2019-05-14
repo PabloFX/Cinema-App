@@ -58,7 +58,7 @@ tickets.post("/", async (req, res) => {
     else console.log(info);
   });
 
-  res.send(mailApiKey);
+  res.send("email was sent");
 });
 
 module.exports = tickets;
