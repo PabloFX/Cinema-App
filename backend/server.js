@@ -3,11 +3,13 @@ const mongoose = require("mongoose");
 const rooms = require("./src/routes/rooms");
 const tickets = require("./src/routes/tickets");
 
+const config = require("./src/config/config.json");
+
 const port = process.env.PORT || 8080;
 const app = express();
 
-const URL =
-  "mongodb+srv://coderscamp:coderscrew@cluster-ajob4.mongodb.net/test?retryWrites=true";
+
+const URL = config.MONGO_URL;
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");

@@ -6,6 +6,9 @@ const moment = require("moment");
 
 const { validateTicket } = require("../models/ticket");
 const tickets = express.Router();
+const config = require("../config/config.json");
+
+const mailApiKey = config.MAIL_API;
 
 tickets.post("/", async (req, res) => {
   const { error } = validateTicket(req.body);
@@ -14,8 +17,7 @@ tickets.post("/", async (req, res) => {
 
   let transporter = nodemailer.createTransport(
     nodemailerSendgrid({
-      apiKey:
-        "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"
+      apiKey: mailApiKey
     })
   );
 
