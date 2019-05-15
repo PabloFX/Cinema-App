@@ -4,6 +4,7 @@ const express = require("express");
 
 const { Room, validate } = require("../models/room");
 const { checkSeats } = require("../modules/checkSeats"); //module to check if there is no separate empty space between taken
+const { randomSeats } = require("../modules/randomSeats"); //modules generates random seats booking
 const rooms = express.Router();
 
 //get all existing rooms from the database
@@ -21,6 +22,18 @@ rooms.post("/", async (req, res) => {
   //date conversion from timestamp to normal date
   req.body.forEach(room => {
     return (room.date = new Date(room.date));
+  });
+  //create random bookings
+  req.body.forEach(room => {
+    //console.log(room.capacity);
+    const randomArray = room.capacity.map((row, i) => {
+      //console.log(`initial row value is: ${row}`);
+      row = randomSeats();
+      //console.log(`row number is: ${row}`);
+      return row;
+    });
+    room.capacity = randomArray.slice(0);
+    //console.log(room.capacity);
   });
 
   //find room with given properties and return as an object
@@ -100,6 +113,11 @@ rooms.put("/getTickets", async (req, res) => {
     //console.log(result);
     res.send(result);
   }
+});
+
+rooms.delete("/", async (req, res) => {
+  const result = await Room.deleteMany();
+  res.send(result);
 });
 
 //DELETE SEANS PO ID
