@@ -24,7 +24,7 @@ class SideBar extends React.Component {
                 }
                 e.target.classList.toggle('focusOn')
                 if (ref.current.classList.contains('time')) {
-                    this.setState({time: e.target.firstChild})
+                    //this.setState({time: e.target.firstChild})
                     console.log(this.state.time)
                 }
                 console.log(ref.current)
