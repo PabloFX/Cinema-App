@@ -22,29 +22,18 @@ class SideBar extends React.Component {
     chooseOption = () => {
         for (let y = 0; y < this.state.refs.length; y++){
             let divP = this.state.refs[y].current.children
-            let divTime = this.state.refs[y].current
+           // let divTime = this.state.refs[y].current
            
             for (let i = 0; i < divP.length; i++) {
                 divP[i].addEventListener('click', this.chooseValue)
                 
                 }
-
-            // if (divTime.classList.contains('chooseDay')) {
-            //     for (let x = 0; x < divTime.children.length; x++) {
-            //         divTime.children[x].addEventListener('click', function (e) {
-            //             if (e.target === divTime.children[0]) {
-            //                 console.log(this.state.days)
-            //                 let el = []
-            //                 for (let i = new Date().getDay(); i < this.state.days.length; i++) {
-            //                     el.push(<p key={i}>{this.state.days[i]}</p>)
-            //                     console.log(el)
-            //                 }
-            //             }
-            //         })
-            //     }
-            // }
-
         }
+        // for (let x = 0; x < this.state.dayRef.current.children.length; x++ ) {
+        //     this.state.dayRef.current.children[x].addEventListener('click', function() {
+                
+        //     })
+        // }
     }
 
     chooseValue(e){
@@ -83,8 +72,10 @@ class SideBar extends React.Component {
 }
 
     componentDidMount() {
-       this.chooseOption()
        this.setDay()
+       this.chooseOption()
+       this.dayRef.current.children[0].classList.add('focusOn')
+        this.setState({ day: this.state.days[new Date().getDay()]})
     }
 
     setDay = () => {
@@ -96,7 +87,9 @@ class SideBar extends React.Component {
         for (let y = 0; y < new Date().getDay(); y++) {
             el.push(<p key={y}>{this.state.days[y]}</p>)
         }
-        this.setState({showDayArr: el})
+        
+        //el[0].classList.add('focusOn')
+        return el
     }
 
 
@@ -108,16 +101,15 @@ class SideBar extends React.Component {
         const timeArr = [];
         let hourMore = hours + 1
         let standartHour = 8
-
+        
         if (minutes > 15) {
             for (let i = 0; i < 22 - hours; i++) {
                 hourMore = hourMore + 1
                 timeArr.push(<p key={i}>{hourMore}:15</p>)
             }
         }else {
-            for (let i = 0; i < standartHour + 1; i++) {
-                standartHour = standartHour + 1;
-                timeArr.push(<p key={i}>{standartHour} + : + 15</p>)
+            for (let i = 0; i < 22 - hours; i++) {
+                timeArr.push(<p key={i}>{hourMore} + : + 15</p>)
             }
         }
         return timeArr
@@ -138,7 +130,7 @@ class SideBar extends React.Component {
                 <p>3D</p>
             </div>
             <div ref={this.dayRef} className="chooseDay">
-                {this.state.showDayArr}
+                {this.setDay()}
             </div>
             <div ref={this.timeRef} className="time">
                 {this.setTimeForToday()}
