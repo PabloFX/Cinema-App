@@ -1,6 +1,6 @@
 import React from 'react' 
-import { BrowserRouter, Route, Redirect, Link  } from 'react-router-dom'
-import ParticularMovie from './ParticularMovie'
+import { Link  } from 'react-router-dom'
+
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
 
@@ -13,20 +13,11 @@ class MoviesInfoBlock extends React.Component {
         movieArr: [{id: null, vote_average:null, title: null, poster_path: null, genre_ids: [null,null]}]
     }
 
-    goToMovie() {
-      
-        return(
-            <Redirect to={{
-                pathname: '/particularMovie',
-                state: { id: '123' }
-            }}
-            />
-        )
-    }
+   
 
     componentDidMount() {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
-        FetchMovies().then(a => { console.log(a) })
+        //FetchMovies().then(a => { console.log(a) })
     }
 
     render () {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-materialize';
-import { Redirect } from 'react-router-dom';
-import avengers2 from '../avengers2.jpg'
+
 import SideBar from './SideBar'
 
 
@@ -10,6 +9,10 @@ class  ParticularMovie extends React.Component {
 
     redirectToTarget = () => {
         this.props.history.push(`/`)
+    }
+
+    componentDidMount() {
+        
     }
 
     render() {

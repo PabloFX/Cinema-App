@@ -139,6 +139,7 @@ export const FetchMovies = async dispatch => {
     //wywołania///////////////////////////////////////////////////
     const shortArr = cuttingMovies(arrayMovie);
     const sortedArr = sortingMovies(shortArr);
+    // eslint-disable-next-line no-unused-vars
     const finalArr = stringifyGenre(sortedArr);
         //    addTimeAndLanguage()
         

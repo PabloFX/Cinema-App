@@ -1,53 +1,132 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class SideBar extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Say', 'Sun'],
-            day: null,
-            type: null,
-            time: null
-        }
         this.typeRef = React.createRef();
         this.dayRef = React.createRef();
         this.timeRef = React.createRef();
+        this.state = {
+            days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Say', 'Sun'],
+            day: null,
+            type: 'All',
+            time: null,
+            refs: [this.typeRef, this.dayRef, this.timeRef],
+            showDayArr: []
+        }
+        
+        this.chooseValue = this.chooseValue.bind(this);
     }
     
-    chooseOption(ref) {
-        let divP = ref.current.children
-        
-        for (let i = 0; i < divP.length; i++) {
-            divP[i].addEventListener('click', function (e) {
-                for (let y = 0; y < divP.length; y++) {
-                    divP[y].classList.remove('focusOn')
+    chooseOption = () => {
+        for (let y = 0; y < this.state.refs.length; y++){
+            let divP = this.state.refs[y].current.children
+            let divTime = this.state.refs[y].current
+           
+            for (let i = 0; i < divP.length; i++) {
+                divP[i].addEventListener('click', this.chooseValue)
+                
                 }
-                e.target.classList.toggle('focusOn')
-                if (ref.current.classList.contains('time')) {
-                    //this.setState({time: e.target.firstChild})
-                    console.log(this.state.time)
-                }
-                console.log(ref.current)
-            })
+
+            // if (divTime.classList.contains('chooseDay')) {
+            //     for (let x = 0; x < divTime.children.length; x++) {
+            //         divTime.children[x].addEventListener('click', function (e) {
+            //             if (e.target === divTime.children[0]) {
+            //                 console.log(this.state.days)
+            //                 let el = []
+            //                 for (let i = new Date().getDay(); i < this.state.days.length; i++) {
+            //                     el.push(<p key={i}>{this.state.days[i]}</p>)
+            //                     console.log(el)
+            //                 }
+            //             }
+            //         })
+            //     }
+            // }
+
         }
     }
 
-    componentDidMount() {
-       this.chooseOption(this.typeRef)
-        this.chooseOption(this.dayRef)
-        this.chooseOption(this.timeRef)
+    chooseValue(e){
+       
+        let parent = e.target.parentNode.children
+            for (let y = 0; y < parent.length; y++) {
+                parent[y].classList.remove('focusOn')
+            }
+            e.target.classList.toggle('focusOn')
+            if (e.target.parentNode.classList.contains('time')) {
+                this.setState({time: e.target.innerHTML})
+               
+            } else if (e.target.parentNode.classList.contains('ticketType')) {
+                this.setState({ type: e.target.innerHTML })
+                
+                
+            } else if (e.target.parentNode.classList.contains('chooseDay')) {
+                this.setState({ day: e.target.innerHTML })
+                
+            }
+            this.checkAllFillValues()
     }
 
-    setDay() {
+    checkAllFillValues = () => {
+        if (this.state.time && this.state.day && this.state.type !== null) {
+            return ( 
+                <Link to={{
+                    pathname: '/hall',
+                    state: {
+                    }
+                }} > 
+                    <div className='goToCinemaHall'><i className="material-icons">arrow_forward</i></div>
+                </Link>
+            )
+    }
+}
+
+    componentDidMount() {
+       this.chooseOption()
+       this.setDay()
+    }
+
+    setDay = () => {
         let el = []
         
         for (let i = new Date().getDay(); i < this.state.days.length; i++) {
-                
                el.push(<p key={i}>{this.state.days[i]}</p>)
-               
         }
-        return el
+        for (let y = 0; y < new Date().getDay(); y++) {
+            el.push(<p key={y}>{this.state.days[y]}</p>)
+        }
+        this.setState({showDayArr: el})
     }
+
+
+
+    setTimeForToday() {
+        const d = new Date();
+        const hours = d.getHours() - 1;
+        const minutes = d.getMinutes();
+        const timeArr = [];
+        let hourMore = hours + 1
+        let standartHour = 8
+
+        if (minutes > 15) {
+            for (let i = 0; i < 22 - hours; i++) {
+                hourMore = hourMore + 1
+                timeArr.push(<p key={i}>{hourMore}:15</p>)
+            }
+        }else {
+            for (let i = 0; i < standartHour + 1; i++) {
+                standartHour = standartHour + 1;
+                timeArr.push(<p key={i}>{standartHour} + : + 15</p>)
+            }
+        }
+        return timeArr
+    }
+
+//     for(let i = 0; i <standartHour + 1; i++) {
+//     standartHour = standartHour + 1;
+//     timeArr.push(<p>{standartHour} + ":" + "15"</p>)
+// }
    
 
     render() {
@@ -59,25 +138,12 @@ class SideBar extends React.Component {
                 <p>3D</p>
             </div>
             <div ref={this.dayRef} className="chooseDay">
-                {this.setDay()}
+                {this.state.showDayArr}
             </div>
             <div ref={this.timeRef} className="time">
-                <p>09:15</p>
-                <p>10:15</p>
-                <p>11:15</p>
-                <p>12:15</p>
-                <p>13:15</p>
-                <p>14:15</p>
-                <p>15:15</p>
-                <p>16:15</p>
-                <p>17:15</p>
-                <p>18:15</p>
-                <p>19:15</p>
-                <p>20:15</p>
-                <p>21:15</p>
-                <p>22:15</p>
+                {this.setTimeForToday()}
             </div>
-            <div className='goToCinemaHall'><i className="material-icons">arrow_forward</i></div>
+           {this.checkAllFillValues()}
         </div>
     )
     }
