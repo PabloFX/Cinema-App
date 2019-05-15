@@ -40,6 +40,15 @@ body {
     color: $lightGray-color;
     font-size: 16px;
 }
+.genre {
+    position: absolute;
+    bottom: 64px;
+}
+
+.durationAndCountry {
+    position: absolute;
+    bottom: 45px;
+}
 
 
 $ribbon-bg: red;
@@ -81,5 +90,32 @@ $ribbon-notch: 15px;
                 margin-top: -1px;
             }
         }
+    }
+}
+
+@media (max-width: 400px) {
+
+    .genre,
+    .durationAndCountry {
+        font-size: 12px;
+    }
+
+    .genre {
+        position: absolute;
+        bottom: 68px;
+    }
+
+    .durationAndCountry {
+        position: absolute;
+        bottom: 53px;
+    }
+
+    .movieName {
+        font-size: 18px;
+        margin-top: 14px;
+    }
+    
+    .movieInfo p:first-child{
+        margin-top: 14px;
     }
 }

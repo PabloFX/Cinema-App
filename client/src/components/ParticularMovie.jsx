@@ -1,27 +1,36 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-materialize';
+import { Redirect } from 'react-router-dom';
 import avengers2 from '../avengers2.jpg'
 import SideBar from './SideBar'
 
-const ParticularMovie = () => {
-    return(
+
+class  ParticularMovie extends React.Component {
+   
+
+    redirectToTarget = () => {
+        this.props.history.push(`/`)
+    }
+
+    render() {
+     return(
     <section>
-        
-        <img src={avengers2} id="mainPoster" alt="Poster"/>
-        <i className="material-icons comeBack">arrow_back</i>
+       
+        <img src={this.props.location.state.image} id="mainPoster" alt="Poster"/>
+        <i className="material-icons comeBack" onClick={this.redirectToTarget}>arrow_back</i>
         <div className="movieMainInfo">
-            <p className="movieName">Avengers</p>
-            <p className="genre">Thriller, comedy</p>
+                 <p className="movieName">{this.props.location.state.title}</p>
+                 <p className="genre">{this.props.location.state.genreOne}, {this.props.location.state.genreSec}</p>
             <p className="durationAndCountry">120 min, USA</p>
 
          <div className="ratingBookmarkMain">
             <p className="ratingHolder">
-            <i className="tiny material-icons">star_border</i>5.9</p>
+                         <i className="tiny material-icons">star_border</i>{this.props.location.state.vote}</p>
         </div>
         </div>
         <Tabs className="tab-demo z-depth-1" options={{swipeable: true}}>
             <Tab title="About" active id="myTabs">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugit enim deleniti. Dignissimos minus magni quia sequi eaque voluptates, adipisci odit nulla nisi quam quis enim iusto dolore quo similique.
+                     {this.props.location.state.overview}
             </Tab>
             <Tab title="Actors">
                     <div className="actors">
@@ -44,6 +53,7 @@ const ParticularMovie = () => {
         
     </section>
     )
+     }
 }
 
 export default ParticularMovie

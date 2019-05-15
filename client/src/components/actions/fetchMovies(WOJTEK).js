@@ -139,7 +139,7 @@ export const FetchMovies = async dispatch => {
     //wywołania///////////////////////////////////////////////////
     const shortArr = cuttingMovies(arrayMovie);
     const sortedArr = sortingMovies(shortArr);
-    //const finalArr = stringifyGenre(sortedArr);
+    const finalArr = stringifyGenre(sortedArr);
         //    addTimeAndLanguage()
         
     return sortedArr

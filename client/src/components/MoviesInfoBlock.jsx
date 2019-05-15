@@ -1,8 +1,9 @@
 import React from 'react' 
-
+import { BrowserRouter, Route, Redirect, Link  } from 'react-router-dom'
+import ParticularMovie from './ParticularMovie'
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
-import FetchTop100 from './actions/fetchTop100'
+
 
 
 
@@ -11,22 +12,44 @@ class MoviesInfoBlock extends React.Component {
     state = {
         movieArr: [{id: null, vote_average:null, title: null, poster_path: null, genre_ids: [null,null]}]
     }
-    
+
+    goToMovie() {
+      
+        return(
+            <Redirect to={{
+                pathname: '/particularMovie',
+                state: { id: '123' }
+            }}
+            />
+        )
+    }
+
     componentDidMount() {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
         FetchMovies().then(a => { console.log(a) })
-        FetchTop100().then(a => { console.log(a) })
     }
+
     render () {
         
         return (
             <div className="moviesHolder">
                 {this.state.movieArr.map(m => { return (    
-                <div className="particularMovie" key={m.id}>
+                    <Link key={m.id} to={{
+                        pathname:'/particularMovie',
+                        state: {
+                            image: `http://image.tmdb.org/t/p/w500//${m.poster_path}`,
+                            genreOne: m.genre_ids[0],
+                            genreSec: m.genre_ids[1],
+                            title: m.title,
+                            vote: m.vote_average,
+                            overview: m.overview
+            }
+            }}>
+                    <div className="particularMovie" onClick={this.goToMovie} key={m.id}>
                 <img alt={m.title} src={`http://image.tmdb.org/t/p/w185/${m.poster_path}`} />
                     <div className="movieInfo">
                         <p className="movieName">{m.title}</p>
-                            <p className="genre">{m.genre_ids[0]},{m.genre_ids[1]}</p>
+                            <p className="genre">{m.genre_ids[0]}, {m.genre_ids[1]}</p>
                         <p className="durationAndCountry">120 min, USA</p>
                     </div>
                     <div className="ratingBookmark">
@@ -34,6 +57,7 @@ class MoviesInfoBlock extends React.Component {
                          <i className="tiny material-icons">star_border</i>{m.vote_average}</p>
                     </div>
                 </div>
+                    </Link>
                 )})}
             </div>
         )
@@ -55,3 +79,5 @@ export default MoviesInfoBlock
     //             <i className="tiny material-icons">star_border</i>5.9</p>
     //     </div>
     //             </div >
+
+    
