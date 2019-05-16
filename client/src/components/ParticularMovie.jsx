@@ -49,9 +49,7 @@ class  ParticularMovie extends React.Component {
             Test 3
             </Tab>
         </Tabs>
-            <div className="buyTicket sidenav-trigger" data-target="slide-out" >
-                <i className="material-icons">credit_card</i>
-        </div>
+            
      <SideBar /> 
         
     </section>

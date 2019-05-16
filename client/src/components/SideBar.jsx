@@ -13,27 +13,40 @@ class SideBar extends React.Component {
             type: 'All',
             time: null,
             refs: [this.typeRef, this.dayRef, this.timeRef],
-            showDayArr: []
+            showDayArr: this.setTimeForToday()
         }
         
         this.chooseValue = this.chooseValue.bind(this);
+        this.chooseDay = this.chooseDay.bind(this)
     }
     
     chooseOption = () => {
         for (let y = 0; y < this.state.refs.length; y++){
             let divP = this.state.refs[y].current.children
-           // let divTime = this.state.refs[y].current
+       
            
             for (let i = 0; i < divP.length; i++) {
                 divP[i].addEventListener('click', this.chooseValue)
                 
                 }
         }
-        // for (let x = 0; x < this.state.dayRef.current.children.length; x++ ) {
-        //     this.state.dayRef.current.children[x].addEventListener('click', function() {
-                
-        //     })
-        // }
+        for (let x = 0; x < this.dayRef.current.children.length; x++) {
+            this.dayRef.current.children[x].addEventListener('click',this.chooseDay)
+        }
+        
+    }
+    
+    chooseDay(e) {
+      
+         if (e.target.classList.contains('checked')) {
+                this.setState({ showDayArr: this.setTimeForToday() })
+            }else{
+             this.setState({ showDayArr: this.setTimeForOtherDays()}) 
+            }
+            for (let c = 0; c < this.timeRef.current.children.length; c++) {
+            this.timeRef.current.children[c].addEventListener('click', this.chooseValue)
+
+        }
     }
 
     chooseValue(e){
@@ -75,7 +88,13 @@ class SideBar extends React.Component {
        this.setDay()
        this.chooseOption()
        this.dayRef.current.children[0].classList.add('focusOn')
-        this.setState({ day: this.state.days[new Date().getDay()]})
+       this.dayRef.current.children[0].classList.add('checked')
+       this.setState({ day: this.state.days[new Date().getDay()]})
+        for (let c = 0; c < this.timeRef.current.children.length; c++) {
+            this.timeRef.current.children[c].addEventListener('click', this.chooseValue)
+
+        }
+        
     }
 
     setDay = () => {
@@ -88,7 +107,6 @@ class SideBar extends React.Component {
             el.push(<p key={y}>{this.state.days[y]}</p>)
         }
         
-        //el[0].classList.add('focusOn')
         return el
     }
 
@@ -100,7 +118,7 @@ class SideBar extends React.Component {
         const minutes = d.getMinutes();
         const timeArr = [];
         let hourMore = hours + 1
-        let standartHour = 8
+        
         
         if (minutes > 15) {
             for (let i = 0; i < 22 - hours; i++) {
@@ -109,9 +127,19 @@ class SideBar extends React.Component {
             }
         }else {
             for (let i = 0; i < 22 - hours; i++) {
-                timeArr.push(<p key={i}>{hourMore} + : + 15</p>)
+                timeArr.push(<p key={i}>{hourMore}:15</p>)
+                hourMore = hourMore + 1
             }
         }
+        return timeArr
+    }
+
+    setTimeForOtherDays() {
+        const timeArr =[];
+        for (let i = 8; i < 24 ; i++) {
+            timeArr.push(<p key={i}>{i}:15</p>)
+        }
+        
         return timeArr
     }
 
@@ -123,6 +151,7 @@ class SideBar extends React.Component {
 
     render() {
     return (
+        <section>
         <div id="slide-out" className="sidenav sidebar">
             <div ref={this.typeRef} className="ticketType">
                 <p className="focusOn">All</p>
@@ -133,10 +162,14 @@ class SideBar extends React.Component {
                 {this.setDay()}
             </div>
             <div ref={this.timeRef} className="time">
-                {this.setTimeForToday()}
+                {this.state.showDayArr}
             </div>
            {this.checkAllFillValues()}
         </div>
+            <div className="buyTicket sidenav-trigger" data-target="slide-out" >
+                <i className="material-icons">credit_card</i>
+            </div>
+        </section>
     )
     }
 }

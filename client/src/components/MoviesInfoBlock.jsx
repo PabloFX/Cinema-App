@@ -1,8 +1,9 @@
 import React from 'react' 
-import { Link  } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 //import Cinema from './actions/fetchMovies'
 import FetchMovies from './actions/fetchMovies(WOJTEK)'
+import FetchTop100 from './actions/fetchTop100'
 
 
 
@@ -17,7 +18,7 @@ class MoviesInfoBlock extends React.Component {
 
     componentDidMount() {
         FetchMovies().then(a => { this.setState({movieArr: a}) })
-        //FetchMovies().then(a => { console.log(a) })
+        FetchTop100().then(a => { console.log(a) })
     }
 
     render () {
@@ -36,7 +37,7 @@ class MoviesInfoBlock extends React.Component {
                             overview: m.overview
             }
             }}>
-                    <div className="particularMovie" onClick={this.goToMovie} key={m.id}>
+                    <div className="particularMovie" key={m.id}>
                 <img alt={m.title} src={`http://image.tmdb.org/t/p/w185/${m.poster_path}`} />
                     <div className="movieInfo">
                         <p className="movieName">{m.title}</p>
