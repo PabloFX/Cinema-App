@@ -116,3 +116,22 @@
         margin-left: 15px;
     }
 }
+
+//Tabs
+.description {
+    height: 23px;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    div {
+        color: $primary-color;
+        margin-left: 7px;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    p {
+        color: white;
+        font-size: 15px;
+        margin: 10px;
+        letter-spacing: 0.5px;
+    }
+}

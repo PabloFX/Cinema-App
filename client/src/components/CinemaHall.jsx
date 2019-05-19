@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Seats from './cinemaHallSeats'
+
 
 
 //row__seat--reserved  ---- class to show reserved place
@@ -26,7 +28,13 @@ class CinemaHall extends React.Component {
                     <li className="legend__item legend__item--selected">Selected</li>
                 </ul>
                 <div className="price">Total price: {this.state.p}$</div>
-                <button className="action action--buy">Buy tickets</button>
+                <Link to={{
+                    pathname: '/inputs',
+                    state: {
+                        price: this.state.p
+                    }
+                }}><button className="action action--buy">Buy tickets</button>
+                </Link>
             </div>
         )
     }

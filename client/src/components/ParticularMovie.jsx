@@ -1,18 +1,20 @@
 import React from 'react';
-import { Tabs, Tab } from 'react-materialize';
 
+import M from "materialize-css/dist/js/materialize.min.js";
+import "materialize-css/dist/css/materialize.min.css";
 import SideBar from './SideBar'
 
 
 class  ParticularMovie extends React.Component {
-   
+
+
 
     redirectToTarget = () => {
         this.props.history.push(`/`)
     }
 
     componentDidMount() {
-        
+        M.AutoInit()
     }
 
     render() {
@@ -31,7 +33,20 @@ class  ParticularMovie extends React.Component {
                          <i className="tiny material-icons">star_border</i>{this.props.location.state.vote}</p>
         </div>
         </div>
-        <Tabs className="tab-demo z-depth-1" options={{swipeable: true}}>
+             <div className="description">
+             <div>Description:</div>
+             <p>{this.props.location.state.overview}</p>
+             </div>
+            
+     <SideBar /> 
+        
+    </section>
+    )
+     }
+}
+
+export default ParticularMovie
+/* <Tabs className="tab-demo z-depth-1" options={{swipeable: true}}>
             <Tab title="About" active id="myTabs">
                      {this.props.location.state.overview}
             </Tab>
@@ -48,13 +63,4 @@ class  ParticularMovie extends React.Component {
             <Tab title="Tickets">
             Test 3
             </Tab>
-        </Tabs>
-            
-     <SideBar /> 
-        
-    </section>
-    )
-     }
-}
-
-export default ParticularMovie
+        </Tabs> */

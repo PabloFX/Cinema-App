@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import M from "materialize-css/dist/js/materialize.min.js";
+import "materialize-css/dist/css/materialize.min.css";
 
 class SideBar extends React.Component {
     constructor(props) {
@@ -94,6 +96,8 @@ class SideBar extends React.Component {
             this.timeRef.current.children[c].addEventListener('click', this.chooseValue)
 
         }
+
+        M.AutoInit();
         
     }
 
@@ -169,6 +173,9 @@ class SideBar extends React.Component {
             <div className="buyTicket sidenav-trigger" data-target="slide-out" >
                 <i className="material-icons">credit_card</i>
             </div>
+            <script>
+             
+    </script>
         </section>
     )
     }
